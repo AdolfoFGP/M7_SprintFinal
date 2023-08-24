@@ -1,0 +1,19 @@
+{% extends 'task_manager_app/base.html' %}
+
+{% block title %}Tareas Asignadas{% endblock %}
+
+{% block content %}
+    <h1>Tareas Asignadas a Usuarios</h1>
+    <ul>
+        {% for task in assigned_tasks %}
+            <li>
+                <strong>{{ task.title }}</strong><br>
+                Descripción: {{ task.description }}<br>
+                Fecha Límite: {{ task.due_date }}<br>
+                Prioridad: {{ task.priority }}<br> 
+                Usuario asignado: {{ task.assigned_to }}
+                <a href="{% url 'task_manager_app:task_detail' task.pk %}">Ver Detalles</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
